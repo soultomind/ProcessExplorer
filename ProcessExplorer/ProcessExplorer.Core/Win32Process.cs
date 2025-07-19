@@ -22,7 +22,7 @@ namespace ProcessExplorer.Core
 
         public override string ToString()
         {
-            return $"{Name} (PID: {ProcessId}, Parent PID: {ParentProcessId})";
+            return $"{Name} (ProcessId: {ProcessId}, ParentProcessId: {ParentProcessId})";
         }
 
         public static Win32Process Parse(ManagementObject mObject)

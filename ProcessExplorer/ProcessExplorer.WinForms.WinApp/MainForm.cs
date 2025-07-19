@@ -21,10 +21,13 @@ namespace ProcessExplorer.WinForms.WinApp
             ManagementWin32Processes? win32Processes = null;
             if (ManagementWin32Processes.TryGetProcesses(out win32Processes))
             {
-                win32Processes.Processes.ForEach(p =>
+                if (win32Processes is not null)
                 {
-                    Debug.WriteLine($"Process Name: {p.Name}, Process ID: {p.ProcessId}, Parent Process ID: {p.ParentProcessId}");
-                });
+                    win32Processes.Processes.ForEach(p =>
+                    {
+                        Debug.WriteLine(p.ToString());
+                    });
+                }
             }
         }
     }
