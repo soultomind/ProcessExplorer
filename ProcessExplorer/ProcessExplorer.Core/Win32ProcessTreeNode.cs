@@ -3,7 +3,7 @@
 namespace ProcessExplorer.Core
 {
     /// <summary>
-    /// <see cref="System.Management.ManagementObjectSearcher"/>(Win32_Process)
+    /// <see cref="System.Management.ManagementObjectSearcher"/>(Win32_Process) Tree Node Class
     /// <para>
     /// Name: System Idle Process
     /// </para>
@@ -14,24 +14,26 @@ namespace ProcessExplorer.Core
     /// ProcessId: 0
     /// </para>
     /// </summary>
-    public class Win32Process
+    public class Win32ProcessTreeNode
     {
+        public const int InvalidProcessId = 0;
         public required string Name { get; set; }
         public int ParentProcessId { get; set; }
         public int ProcessId { get; set; }
+        public List<Win32ProcessTreeNode> Children { get; } = new List<Win32ProcessTreeNode>();
 
         public override string ToString()
         {
             return $"{Name} (ProcessId: {ProcessId}, ParentProcessId: {ParentProcessId})";
         }
 
-        public static Win32Process Parse(ManagementObject mObject)
+        public static Win32ProcessTreeNode Parse(ManagementObject mObject)
         {
-            return new Win32Process
+            return new Win32ProcessTreeNode
             {
                 Name = mObject["Name"]?.ToString() ?? string.Empty,
-                ParentProcessId = Convert.ToInt32(mObject["ParentProcessId"] ?? 0),
-                ProcessId = Convert.ToInt32(mObject["ProcessId"] ?? 0)
+                ParentProcessId = Convert.ToInt32(mObject["ParentProcessId"] ?? InvalidProcessId),
+                ProcessId = Convert.ToInt32(mObject["ProcessId"] ?? InvalidProcessId)
             };
         }
     }

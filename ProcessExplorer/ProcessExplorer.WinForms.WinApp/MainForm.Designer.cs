@@ -29,11 +29,12 @@
         private void InitializeComponent()
         {
             buttonGetProcessList = new Button();
+            treeViewProcesses = new TreeView();
             SuspendLayout();
             // 
             // buttonGetProcessList
             // 
-            buttonGetProcessList.Location = new Point(28, 28);
+            buttonGetProcessList.Location = new Point(12, 12);
             buttonGetProcessList.Name = "buttonGetProcessList";
             buttonGetProcessList.Size = new Size(75, 23);
             buttonGetProcessList.TabIndex = 0;
@@ -41,11 +42,19 @@
             buttonGetProcessList.UseVisualStyleBackColor = true;
             buttonGetProcessList.Click += ButtonGetProcessList_Click;
             // 
+            // treeViewProcesses
+            // 
+            treeViewProcesses.Location = new Point(12, 51);
+            treeViewProcesses.Name = "treeViewProcesses";
+            treeViewProcesses.Size = new Size(776, 387);
+            treeViewProcesses.TabIndex = 1;
+            // 
             // MainForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
+            Controls.Add(treeViewProcesses);
             Controls.Add(buttonGetProcessList);
             Name = "MainForm";
             Text = "MainForm";
@@ -56,5 +65,6 @@
         #endregion
 
         private Button buttonGetProcessList;
+        private TreeView treeViewProcesses;
     }
 }

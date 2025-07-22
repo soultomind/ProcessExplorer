@@ -18,17 +18,23 @@ namespace ProcessExplorer.WinForms.WinApp
 
         private void ButtonGetProcessList_Click(object sender, EventArgs e)
         {
-            ManagementWin32Processes? win32Processes = null;
-            if (ManagementWin32Processes.TryGetProcesses(out win32Processes))
+            treeViewProcesses.Nodes.Clear();
+            var roots = Win32ProcessTreeBuilder.Build();
+            foreach (var root in roots)
             {
-                if (win32Processes is not null)
-                {
-                    win32Processes.Processes.ForEach(p =>
-                    {
-                        Debug.WriteLine(p.ToString());
-                    });
-                }
+                treeViewProcesses.Nodes.Add(CreateTreeNode(root));
             }
+            treeViewProcesses.ExpandAll();
+        }
+
+        private TreeNode CreateTreeNode(Win32ProcessTreeNode node)
+        {
+            var treeNode = new TreeNode($"{node.Name} (ProcessId: {node.ProcessId})");
+            foreach (var child in node.Children)
+            {
+                treeNode.Nodes.Add(CreateTreeNode(child));
+            }
+            return treeNode;
         }
     }
 }
