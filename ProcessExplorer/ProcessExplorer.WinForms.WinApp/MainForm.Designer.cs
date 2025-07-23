@@ -28,8 +28,10 @@
         /// </summary>
         private void InitializeComponent()
         {
+            components = new System.ComponentModel.Container();
             buttonGetProcessList = new Button();
             treeViewProcesses = new TreeView();
+            processImageList = new ImageList(components);
             SuspendLayout();
             // 
             // buttonGetProcessList
@@ -44,10 +46,19 @@
             // 
             // treeViewProcesses
             // 
+            treeViewProcesses.ImageIndex = 0;
+            treeViewProcesses.ImageList = processImageList;
             treeViewProcesses.Location = new Point(12, 51);
             treeViewProcesses.Name = "treeViewProcesses";
+            treeViewProcesses.SelectedImageIndex = 0;
             treeViewProcesses.Size = new Size(776, 387);
             treeViewProcesses.TabIndex = 1;
+            // 
+            // processImageList
+            // 
+            processImageList.ColorDepth = ColorDepth.Depth32Bit;
+            processImageList.ImageSize = new Size(16, 16);
+            processImageList.TransparentColor = Color.Transparent;
             // 
             // MainForm
             // 
@@ -66,5 +77,6 @@
 
         private Button buttonGetProcessList;
         private TreeView treeViewProcesses;
+        private ImageList processImageList;
     }
 }

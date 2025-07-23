@@ -1,6 +1,7 @@
 using ProcessExplorer.Core;
 using System.Diagnostics;
 using System.Management;
+using System.Xml.Linq;
 
 namespace ProcessExplorer.WinForms.WinApp
 {
@@ -9,32 +10,23 @@ namespace ProcessExplorer.WinForms.WinApp
         public MainForm()
         {
             InitializeComponent();
+
+            // TreeView¿¡ ImageList ¿¬°á
+            /*
+            treeViewProcesses.ImageList = processImageList;
+            processImageList.ColorDepth = ColorDepth.Depth32Bit;
+            processImageList.ImageSize = new Size(16, 16);
+            */
         }
 
         private void MainForm_Load(object sender, EventArgs e)
         {
-
+            InitializeTreeViewProcesses();
         }
 
         private void ButtonGetProcessList_Click(object sender, EventArgs e)
         {
-            treeViewProcesses.Nodes.Clear();
-            var roots = Win32ProcessTreeBuilder.Build();
-            foreach (var root in roots)
-            {
-                treeViewProcesses.Nodes.Add(CreateTreeNode(root));
-            }
-            treeViewProcesses.ExpandAll();
-        }
-
-        private TreeNode CreateTreeNode(Win32ProcessTreeNode node)
-        {
-            var treeNode = new TreeNode($"{node.Name} (ProcessId: {node.ProcessId})");
-            foreach (var child in node.Children)
-            {
-                treeNode.Nodes.Add(CreateTreeNode(child));
-            }
-            return treeNode;
+            InitializeTreeViewProcesses();
         }
     }
 }
