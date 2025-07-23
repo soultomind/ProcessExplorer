@@ -80,7 +80,7 @@ namespace ProcessExplorer.WinForms.WinApp
                 processImageList.Images.Add(imageKey, icon);
             }
 
-            var newTreeNode = new TreeNode($"{treeNode.Name} (ProcessId: {treeNode.ProcessId})")
+            var newTreeNode = new TreeNode($"{treeNode.Name} (PID: {treeNode.ProcessId})")
             {
                 ImageKey = imageKey,
                 SelectedImageKey = imageKey
