@@ -24,7 +24,7 @@ namespace ProcessExplorer.WinForms.WinApp
             InitializeTreeViewProcesses();
         }
 
-        private void ButtonGetProcessList_Click(object sender, EventArgs e)
+        private void ButtonGetProcesses_Click(object sender, EventArgs e)
         {
             InitializeTreeViewProcesses();
         }

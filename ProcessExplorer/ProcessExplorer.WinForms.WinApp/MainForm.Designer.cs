@@ -29,20 +29,20 @@
         private void InitializeComponent()
         {
             components = new System.ComponentModel.Container();
-            buttonGetProcessList = new Button();
+            buttonGetProcesses = new Button();
             treeViewProcesses = new TreeView();
             processImageList = new ImageList(components);
             SuspendLayout();
             // 
-            // buttonGetProcessList
+            // buttonGetProcesses
             // 
-            buttonGetProcessList.Location = new Point(12, 12);
-            buttonGetProcessList.Name = "buttonGetProcessList";
-            buttonGetProcessList.Size = new Size(75, 23);
-            buttonGetProcessList.TabIndex = 0;
-            buttonGetProcessList.Text = "목록보기";
-            buttonGetProcessList.UseVisualStyleBackColor = true;
-            buttonGetProcessList.Click += ButtonGetProcessList_Click;
+            buttonGetProcesses.Location = new Point(12, 12);
+            buttonGetProcesses.Name = "buttonGetProcesses";
+            buttonGetProcesses.Size = new Size(75, 23);
+            buttonGetProcesses.TabIndex = 0;
+            buttonGetProcesses.Text = "목록보기";
+            buttonGetProcesses.UseVisualStyleBackColor = true;
+            buttonGetProcesses.Click += ButtonGetProcesses_Click;
             // 
             // treeViewProcesses
             // 
@@ -66,7 +66,7 @@
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
             Controls.Add(treeViewProcesses);
-            Controls.Add(buttonGetProcessList);
+            Controls.Add(buttonGetProcesses);
             Name = "MainForm";
             Text = "MainForm";
             Load += MainForm_Load;
@@ -75,7 +75,7 @@
 
         #endregion
 
-        private Button buttonGetProcessList;
+        private Button buttonGetProcesses;
         private TreeView treeViewProcesses;
         private ImageList processImageList;
     }
