@@ -24,7 +24,18 @@ namespace ProcessExplorer.WinForms.WinApp
             {
                 treeViewProcesses.Nodes.Add(CreateTreeNodeProcessImage(root));
             }
-            treeViewProcesses.ExpandAll();
+
+            switch (TreeViewShowUIProcesses)
+            {
+                case TreeViewShowUIProcesses.ExpandAll:
+                    treeViewProcesses.ExpandAll();
+                    break;
+                case TreeViewShowUIProcesses.CollapseAll:
+                    treeViewProcesses.CollapseAll();
+                    break;
+                default:
+                    break;
+            }
         }
 
         private TreeNode CreateTreeNode(Win32ProcessTreeNode node)
