@@ -29,13 +29,19 @@
         private void InitializeComponent()
         {
             components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             buttonGetProcesses = new Button();
             treeViewProcesses = new TreeView();
             processImageList = new ImageList(components);
-            groupBox1 = new GroupBox();
-            radioButtonExpandAll = new RadioButton();
+            groupBoxTest = new GroupBox();
             radioButtonCollapseAll = new RadioButton();
-            groupBox1.SuspendLayout();
+            radioButtonExpandAll = new RadioButton();
+            menuStrip = new MenuStrip();
+            mainHelpToolStripMenuItem = new ToolStripMenuItem();
+            sub1HelpToolStripMenuItem = new ToolStripMenuItem();
+            sub1AboutProcessExplorerToolStripMenuItem = new ToolStripMenuItem();
+            groupBoxTest.SuspendLayout();
+            menuStrip.SuspendLayout();
             SuspendLayout();
             // 
             // buttonGetProcesses
@@ -52,10 +58,10 @@
             // 
             treeViewProcesses.ImageIndex = 0;
             treeViewProcesses.ImageList = processImageList;
-            treeViewProcesses.Location = new Point(12, 114);
+            treeViewProcesses.Location = new Point(12, 142);
             treeViewProcesses.Name = "treeViewProcesses";
             treeViewProcesses.SelectedImageIndex = 0;
-            treeViewProcesses.Size = new Size(776, 324);
+            treeViewProcesses.Size = new Size(776, 296);
             treeViewProcesses.TabIndex = 1;
             // 
             // processImageList
@@ -64,30 +70,17 @@
             processImageList.ImageSize = new Size(16, 16);
             processImageList.TransparentColor = Color.Transparent;
             // 
-            // groupBox1
+            // groupBoxTest
             // 
-            groupBox1.Controls.Add(radioButtonCollapseAll);
-            groupBox1.Controls.Add(radioButtonExpandAll);
-            groupBox1.Controls.Add(buttonGetProcesses);
-            groupBox1.Location = new Point(12, 8);
-            groupBox1.Name = "groupBox1";
-            groupBox1.Size = new Size(776, 100);
-            groupBox1.TabIndex = 2;
-            groupBox1.TabStop = false;
-            groupBox1.Text = "프로세스 목록";
-            // 
-            // radioButtonExpandAll
-            // 
-            radioButtonExpandAll.AutoSize = true;
-            radioButtonExpandAll.Location = new Point(98, 26);
-            radioButtonExpandAll.Name = "radioButtonExpandAll";
-            radioButtonExpandAll.Size = new Size(78, 19);
-            radioButtonExpandAll.TabIndex = 1;
-            radioButtonExpandAll.TabStop = true;
-            radioButtonExpandAll.Tag = "ExpandAll";
-            radioButtonExpandAll.Text = "ExpandAll";
-            radioButtonExpandAll.UseVisualStyleBackColor = true;
-            radioButtonExpandAll.CheckedChanged += RadioButton_InitializeTreeViewProcesses;
+            groupBoxTest.Controls.Add(radioButtonCollapseAll);
+            groupBoxTest.Controls.Add(radioButtonExpandAll);
+            groupBoxTest.Controls.Add(buttonGetProcesses);
+            groupBoxTest.Location = new Point(12, 35);
+            groupBoxTest.Name = "groupBoxTest";
+            groupBoxTest.Size = new Size(776, 100);
+            groupBoxTest.TabIndex = 2;
+            groupBoxTest.TabStop = false;
+            groupBoxTest.Text = "프로세스 목록";
             // 
             // radioButtonCollapseAll
             // 
@@ -102,19 +95,70 @@
             radioButtonCollapseAll.UseVisualStyleBackColor = true;
             radioButtonCollapseAll.CheckedChanged += RadioButton_InitializeTreeViewProcesses;
             // 
+            // radioButtonExpandAll
+            // 
+            radioButtonExpandAll.AutoSize = true;
+            radioButtonExpandAll.Location = new Point(98, 26);
+            radioButtonExpandAll.Name = "radioButtonExpandAll";
+            radioButtonExpandAll.Size = new Size(78, 19);
+            radioButtonExpandAll.TabIndex = 1;
+            radioButtonExpandAll.TabStop = true;
+            radioButtonExpandAll.Tag = "ExpandAll";
+            radioButtonExpandAll.Text = "ExpandAll";
+            radioButtonExpandAll.UseVisualStyleBackColor = true;
+            radioButtonExpandAll.CheckedChanged += RadioButton_InitializeTreeViewProcesses;
+            // 
+            // menuStrip
+            // 
+            menuStrip.Items.AddRange(new ToolStripItem[] { mainHelpToolStripMenuItem });
+            menuStrip.Location = new Point(0, 0);
+            menuStrip.Name = "menuStrip";
+            menuStrip.Size = new Size(800, 24);
+            menuStrip.TabIndex = 3;
+            menuStrip.Text = "menuStrip1";
+            // 
+            // mainHelpToolStripMenuItem
+            // 
+            mainHelpToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { sub1HelpToolStripMenuItem, sub1AboutProcessExplorerToolStripMenuItem });
+            mainHelpToolStripMenuItem.Name = "mainHelpToolStripMenuItem";
+            mainHelpToolStripMenuItem.Size = new Size(44, 20);
+            mainHelpToolStripMenuItem.Text = "Help";
+            // 
+            // sub1HelpToolStripMenuItem
+            // 
+            sub1HelpToolStripMenuItem.Name = "sub1HelpToolStripMenuItem";
+            sub1HelpToolStripMenuItem.Size = new Size(198, 22);
+            sub1HelpToolStripMenuItem.Text = "Help";
+            sub1HelpToolStripMenuItem.Click += Sub1HelpToolStripMenuItem_Click;
+            // 
+            // sub1AboutProcessExplorerToolStripMenuItem
+            // 
+            sub1AboutProcessExplorerToolStripMenuItem.Name = "sub1AboutProcessExplorerToolStripMenuItem";
+            sub1AboutProcessExplorerToolStripMenuItem.Size = new Size(198, 22);
+            sub1AboutProcessExplorerToolStripMenuItem.Text = "About Process Explorer";
+            sub1AboutProcessExplorerToolStripMenuItem.Click += Sub1AboutProcessExplorerToolStripMenuItem_Click;
+            // 
             // MainForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
-            Controls.Add(groupBox1);
+            Controls.Add(menuStrip);
+            Controls.Add(groupBoxTest);
             Controls.Add(treeViewProcesses);
+            Icon = (Icon)resources.GetObject("$this.Icon");
+            KeyPreview = true;
+            MainMenuStrip = menuStrip;
             Name = "MainForm";
-            Text = "MainForm";
+            Text = "Process Explorer";
             Load += MainForm_Load;
-            groupBox1.ResumeLayout(false);
-            groupBox1.PerformLayout();
+            KeyDown += MainForm_KeyDown;
+            groupBoxTest.ResumeLayout(false);
+            groupBoxTest.PerformLayout();
+            menuStrip.ResumeLayout(false);
+            menuStrip.PerformLayout();
             ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
@@ -122,8 +166,14 @@
         private Button buttonGetProcesses;
         private TreeView treeViewProcesses;
         private ImageList processImageList;
-        private GroupBox groupBox1;
+        private GroupBox groupBoxTest;
         private RadioButton radioButtonCollapseAll;
         private RadioButton radioButtonExpandAll;
+        private ContextMenuStrip contextMenuStrip;
+        private MenuStrip menuStrip;
+        private ToolStripMenuItem helpToolStripMenuItem;
+        private ToolStripMenuItem mainHelpToolStripMenuItem;
+        private ToolStripMenuItem sub1AboutProcessExplorerToolStripMenuItem;
+        private ToolStripMenuItem sub1HelpToolStripMenuItem;
     }
 }
