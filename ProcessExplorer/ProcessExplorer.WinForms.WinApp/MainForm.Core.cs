@@ -10,6 +10,38 @@ namespace ProcessExplorer.WinForms.WinApp
 {
     public partial class MainForm
     {
+        #region ContextMenuStrip
+
+        #region MainHelp
+
+        
+
+        #endregion
+
+        #endregion
+
+        private void HelpProcess()
+        {
+            try
+            {
+                var psi = new ProcessStartInfo
+                {
+                    FileName = "http://www.github.com/soultomind/ProcessExplorer",
+                    UseShellExecute = true
+                };
+                Process.Start(psi);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(
+                    $"브라우저 실행 중 오류가 발생했습니다: {ex.Message}",
+                    "오류",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Error
+                );
+            }
+        }
+
         private void ClearTreeViewProcesses()
         {
             treeViewProcesses.Nodes.Clear();

@@ -12,12 +12,24 @@ namespace ProcessExplorer.WinForms.WinApp
         {
             InitializeComponent();
 
+            Text = String.Format("{0}[{1}\\{2}]",
+                Text, Environment.UserDomainName, Environment.UserName);
+
             radioButtonCollapseAll.Checked = true;
         }
 
         private void MainForm_Load(object sender, EventArgs e)
         {
             InitializeTreeViewProcesses();
+        }
+
+
+        private void MainForm_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.F1)
+            {
+                HelpProcess();
+            }
         }
 
         private void ButtonGetProcesses_Click(object sender, EventArgs e)
@@ -39,6 +51,22 @@ namespace ProcessExplorer.WinForms.WinApp
                         break;
                     default:
                         throw new NotSupportedException($"Unsupported radio button: {radioButton.Name}");
+                }
+            }
+        }
+
+        private void Sub1HelpToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            HelpProcess();
+        }
+
+        private void Sub1AboutProcessExplorerToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            using (AboutDialog aboutDialog = new AboutDialog())
+            {
+                if (aboutDialog.ShowDialog(this) == DialogResult.OK)
+                {
+                    // Do nothing, just close the dialog
                 }
             }
         }
