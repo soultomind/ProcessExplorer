@@ -18,9 +18,9 @@ namespace ProcessExplorer.WinForms.WinApp
         {
             InitializeComponent();
 
-            Assembly assembly = typeof(ProcessExplorerContext).Assembly;
+            Version version = ProcessExplorerContext.Version;
             string processExplorerVersion =
-                String.Format("Process Explorer v{0}", assembly.GetName().Version.ToString());
+                String.Format("Process Explorer v{0}", version.ToString());
 
             labelProcessExplorerVersion.Text = processExplorerVersion;
         }
