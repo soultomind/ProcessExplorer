@@ -9,5 +9,13 @@ namespace ProcessExplorer.Core
     public class UIStringResources
     {
         public const string MyGitHubUrl = "http://www.github.com/soultomind/ProcessExplorer";
+
+        public static string MainFormTitle
+        {
+            get
+            {
+                return $"Process Explorer [{Environment.UserDomainName}\\{Environment.UserName}]";
+            }
+        }
     }
 }

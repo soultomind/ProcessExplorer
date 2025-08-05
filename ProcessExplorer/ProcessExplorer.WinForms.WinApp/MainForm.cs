@@ -12,8 +12,7 @@ namespace ProcessExplorer.WinForms.WinApp
         {
             InitializeComponent();
 
-            Text = String.Format("{0}[{1}\\{2}]",
-                Text, Environment.UserDomainName, Environment.UserName);
+            Text = UIStringResources.MainFormTitle;
 
             radioButtonCollapseAll.Checked = true;
         }
